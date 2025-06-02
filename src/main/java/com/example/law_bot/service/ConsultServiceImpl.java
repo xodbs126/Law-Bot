@@ -15,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class PlanServiceImpl implements PlanService {
+public class ConsultServiceImpl implements ConsultService {
 
     private final UserRepository userRepository;
     private final ConsultRepository consultRepository;
