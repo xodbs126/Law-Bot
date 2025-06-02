@@ -1,4 +1,5 @@
-package com.example.law_bot.DTO;
+package com.example.law_bot.controller;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRegisterDTO {
-    private String userName;
-    private String password;
+public class UserPayDTO {
+
+    private Long id;
+    private Long coins;
+
 }
