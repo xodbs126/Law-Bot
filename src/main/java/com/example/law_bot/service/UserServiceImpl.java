@@ -1,7 +1,7 @@
 package com.example.law_bot.service;
 
 import com.example.law_bot.DTO.UserRegisterDTO;
-import com.example.law_bot.controller.UserPayDTO;
+import com.example.law_bot.DTO.UserPayDTO;
 import com.example.law_bot.entity.User;
 import com.example.law_bot.repository.UserRepository;
 import jakarta.transaction.Transactional;

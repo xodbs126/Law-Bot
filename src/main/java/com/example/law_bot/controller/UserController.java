@@ -1,9 +1,8 @@
 package com.example.law_bot.controller;
 
+import com.example.law_bot.DTO.UserPayDTO;
 import com.example.law_bot.DTO.UserRegisterDTO;
 import com.example.law_bot.service.UserService;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.example.law_bot.controller;
+package com.example.law_bot.DTO;
 
 
 import lombok.AllArgsConstructor;

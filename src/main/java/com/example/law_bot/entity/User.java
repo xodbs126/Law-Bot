@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")  // 관례상 복수형 사용
+@Table(name = "users")
 @Getter
 @Setter
 public class User {
