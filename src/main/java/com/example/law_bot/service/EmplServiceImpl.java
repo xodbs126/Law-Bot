@@ -10,6 +10,8 @@ import com.example.law_bot.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class EmplServiceImpl implements EmplContractService {
@@ -50,9 +52,10 @@ public class EmplServiceImpl implements EmplContractService {
     }
 
     @Override
-    public EmplContractResponseDTO getContractByUserId(Long userId) {
-        EmploymentContract contract = emplContractRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자의 근로계약서가 존재하지 않습니다."));
-        return new EmplContractResponseDTO(contract);
+    public List<EmplContractResponseDTO> getContractsByUserId(Long userId) {
+        List<EmploymentContract> contracts = emplContractRepository.findAllByUserId(userId);
+        return contracts.stream()
+                .map(EmplContractResponseDTO::new)
+                .toList();
     }
 }

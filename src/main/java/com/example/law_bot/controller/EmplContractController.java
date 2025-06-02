@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class EmplContractController {
 
@@ -29,9 +31,9 @@ public class EmplContractController {
     }
 
     @GetMapping("/EmpContract")
-    public ResponseEntity<EmplContractResponseDTO> viewContract(@RequestParam Long userId) {
-        EmplContractResponseDTO dto = emplContractService.getContractByUserId(userId);
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<List<EmplContractResponseDTO>> viewContracts(@RequestParam Long userId) {
+        List<EmplContractResponseDTO> contracts = emplContractService.getContractsByUserId(userId);
+        return ResponseEntity.ok(contracts);
     }
 
 }
