@@ -1,5 +1,6 @@
 package com.example.law_bot.service;
 
+import com.example.law_bot.DTO.ConsultResponseDTO;
 import com.example.law_bot.DTO.CreateConsultDTO;
 import com.example.law_bot.entity.Consult;
 import com.example.law_bot.entity.User;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -44,5 +46,12 @@ public class PlanServiceImpl implements PlanService {
 
         consultRepository.save(consult);
 
+    }
+
+    @Override
+    public List<ConsultResponseDTO> getAllConsults() {
+        return consultRepository.findAll().stream()
+                .map(ConsultResponseDTO::new)
+                .toList();
     }
 }
