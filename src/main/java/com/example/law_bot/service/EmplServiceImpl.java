@@ -7,6 +7,7 @@ import com.example.law_bot.entity.EmploymentContract;
 import com.example.law_bot.entity.User;
 import com.example.law_bot.repository.EmplContractRepository;
 import com.example.law_bot.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,6 @@ package com.example.law_bot.controller;
 
 import com.example.law_bot.DTO.CreateEmpContractDTO;
 import com.example.law_bot.DTO.EmplContractResponseDTO;
-import com.example.law_bot.entity.EmploymentContract;
 import com.example.law_bot.service.EmplContractService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
