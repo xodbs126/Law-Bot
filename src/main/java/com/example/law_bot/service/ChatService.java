@@ -23,37 +23,36 @@ public class ChatService {
     private final OpenAIClient openAIClient;
 
     public ChatResponseDTO handleUserMessage(ChatRequestDTO dto) {
-        // 세션 없으면 생성
+
         ChatSession session = sessionRepo.findById(dto.getSessionId())
                 .orElseGet(() -> sessionRepo.save(new ChatSession(dto.getSessionId(), LocalDateTime.now())));
 
-        // 메시지 저장
+
         ChatMessage msg = new ChatMessage();
         msg.setSession(session);
         msg.setSender(dto.getSender());
         msg.setContent(dto.getContent());
         messageRepo.save(msg);
 
-        // USER 메시지일 때만 판단 여부 체크
+
         if (!"USER".equals(dto.getSender())) return null;
 
-        // USER 전체 발화 모음
         List<ChatMessage> messages = messageRepo.findBySessionIdOrderByTimestampAsc(dto.getSessionId());
         String combinedUserContent = messages.stream()
                 .filter(m -> "USER".equals(m.getSender()))
                 .map(ChatMessage::getContent)
                 .collect(Collectors.joining("\n"));
 
-        // AI에게 프롬프트 전달
-        String prompt = buildPrompt(combinedUserContent);
-        OpenAIResponse aiResult = openAIClient.ask(prompt); // 여기서 ChatGPT 호출
 
-        // AI 메시지 저장
+        String prompt = buildPrompt(combinedUserContent);
+        OpenAIResponse aiResult = openAIClient.ask(prompt);
+
+
         ChatMessage aiMsg = new ChatMessage();
         aiMsg.setSession(session);
         aiMsg.setSender("AI");
         aiMsg.setContent(aiResult.content());
-        aiMsg.setAdviceResult(aiResult.result()); // 예: NEED_ADVICE
+        aiMsg.setAdviceResult(aiResult.result());
         aiMsg.setAdviceReason(aiResult.reason());
         messageRepo.save(aiMsg);
 
