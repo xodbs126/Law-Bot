@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class OpenAIClient {
 
     private final RestTemplate restTemplate;
-    private final String OPENAI_API_KEY = "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";
+//    private final String OPENAI_API_KEY = "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";
     private final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
     public OpenAIClient(RestTemplateBuilder builder) {
